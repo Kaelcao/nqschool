@@ -1,0 +1,40 @@
+extends layout
+
+block content
+	.container
+		.row
+			.col-xs-12.col-sm-8.col-sm-offset-2
+				.panel.panel-default
+					.panel-heading Đăng ký tài khoản
+					.panel-body
+						form
+							.form-group
+								label(for="name") Họ và tên
+								input.form-control#name(type="text",placeholder="Họ và tên")
+							.form-group
+								label(for="email") Email
+								input.form-control#email(type="email",placeholder="Email")
+							.form-group
+								label(for="password") Mật khẩu
+								input.form-control#password(type="password",placeholder="Mật khẩu")
+							.form-group
+								label(for="phone") Số điện thoại 
+								input.form-control#phone(type="number",placeholder="Số điện thoại")
+							.form-group
+								label(for="dob") Ngày sinh
+								input.form-control#dob(type="text",placeholder="dob")
+							.form-group
+								label(for="password") Giới tính
+								.radio
+									label
+										input.gender(type="radio",name="gender",value="male") 
+										span Male
+								.radio
+									label
+										input.gender(type="radio",name="gender",value="female") 
+										span Female
+
+							button.btn.btn-default(type="submit") Đăng ký
+							button.btn.btn-danger.space-left(type="reset") Reset 
+	script(src="javascripts/register.js")
+		

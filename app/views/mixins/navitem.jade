@@ -1,0 +1,7 @@
+mixin navItem(page,selected)
+	if selected === page
+		li.active
+			a(href="#")= page
+	else
+		li
+			a(href="#")= page
