@@ -22,12 +22,12 @@ html
                     a.navbar-brand(href="#") nqschool
                 .collapse.navbar-collapse#nq-navbar
                     ul.nav.navbar-nav.navbar-right
-                        +navItem("Khoá học",selected)
-                        +navItem("Học viên nổi bật",selected)
-                        +navItem("Nhận xét",selected)
-                        +navItem("Liên hệ",selected)
-                        +navItem("Đăng ký",selected) 
-                        +navItem("Đăng nhập",selected)
+                        +navItem("Khoá học",selected,"khoa-hoc")
+                        +navItem("Học viên nổi bật",selected,"hoc-vien-noi-bat")
+                        +navItem("Nhận xét",selected,"nhan-xet")
+                        +navItem("Liên hệ",selected,"lien-he")
+                        +navItem("Đăng ký",selected,"dang-ky")
+                        +navItem("Đăng nhập",selected,"dang-nhap")
         .wrapper
             block content
         script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")

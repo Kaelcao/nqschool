@@ -7,6 +7,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var sass = require('node-sass-middleware');
+var csrf = require('csurf');
+var session = require('express-session');
+
 
 require("./app_api/config/db");
 require("./app_api/config/passport");
@@ -25,6 +28,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(session({
+    secret:process.env.SESSION_SECRET,
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(csrf());
 
 app.use(sass({
     src: __dirname + '/sass',

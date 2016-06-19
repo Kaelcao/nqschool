@@ -4,7 +4,8 @@ var HomeController = require('../controllers/Home');
 var AuthController = require("../controllers/Auth");
 /* GET home page. */
 router.get('/', HomeController.index);
-router.get('/login', AuthController.login);
-router.get('/register',AuthController.register);
+router.get('/dang-nhap', AuthController.login);
+router.get('/dang-ky', AuthController.register);
+
 module.exports = router;
 
