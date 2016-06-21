@@ -9,7 +9,7 @@ router.get('/', HomeController.index);
 
 router.get('/dang-nhap', AuthController.login);
 router.post('/process-login', AuthController.processLogin);
-router.get('/dang-ky',loggedIn ,AuthController.register);
+router.get('/dang-ky' ,AuthController.register);
 router.get('/dang-xuat',AuthController.logOut);
 
 

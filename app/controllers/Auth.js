@@ -8,8 +8,9 @@ module.exports.login = function (req, res, next) {
     var data = {
         title: "Đăng nhập vào tài khoản",
         csrf: req.csrfToken(),
-        message: loginMessage
-    }
+        message: loginMessage,
+        selected: "Đăng nhập",
+    };
     res.render("login", data);
 };
 
