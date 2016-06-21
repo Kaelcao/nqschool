@@ -7,8 +7,10 @@ block content
                 .panel.panel-default
                     .panel-heading Đăng ký tài khoản
                     .panel-body
+                        if message.length > 0
+                            .alert.alert-danger= message
                         .form-container
-                            form#register-form(action="#{host}api/register")
+                            form#register-form(action="/process-register",method="post")
                                 input(type="hidden",name="_csrf",value="#{csrf}")
                                 .form-group
                                     label(for="name") Họ và tên
@@ -19,6 +21,9 @@ block content
                                 .form-group
                                     label(for="password") Mật khẩu
                                     input.form-control#password(type="password",name="password",placeholder="Mật khẩu")
+                                .form-group
+                                    label(for="confirmPassword") Xác nhận mật khẩu
+                                    input.form-control#confirmPassword(type="password",name="confirmPassword",placeholder="Xác nhận mật khẩu")
                                 .form-group
                                     label(for="phone") Số điện thoại
                                     input.form-control#phone(type="number",name="phone",placeholder="Số điện thoại")
