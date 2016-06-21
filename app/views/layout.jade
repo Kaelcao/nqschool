@@ -19,15 +19,18 @@ html
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
-                    a.navbar-brand(href="#") nqschool
+                    a.navbar-brand(href="/") nqschool
                 .collapse.navbar-collapse#nq-navbar
                     ul.nav.navbar-nav.navbar-right
                         +navItem("Khoá học",selected,"khoa-hoc")
                         +navItem("Học viên nổi bật",selected,"hoc-vien-noi-bat")
                         +navItem("Nhận xét",selected,"nhan-xet")
                         +navItem("Liên hệ",selected,"lien-he")
-                        +navItem("Đăng ký",selected,"dang-ky")
-                        +navItem("Đăng nhập",selected,"dang-nhap")
+                        if user
+                            +navItem("Đăng xuất",selected,"dang-xuat")
+                        else
+                            +navItem("Đăng ký",selected,"dang-ky")
+                            +navItem("Đăng nhập",selected,"dang-nhap")
         .wrapper
             block content
         script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")

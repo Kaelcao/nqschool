@@ -9,7 +9,7 @@ block content
                     .panel-body
                         .form-container
                             form#register-form(action="#{host}api/register")
-                                input(type="hidden",value="#{csrf}")
+                                input(type="hidden",name="_csrf",value="#{csrf}")
                                 .form-group
                                     label(for="name") Họ và tên
                                     input.form-control#name(type="text",name="name",placeholder="Họ và tên")

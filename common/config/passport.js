@@ -12,12 +12,12 @@ passport.use(new LocalStrategy({
         }
         if (!user) {
             return done(null, false, {
-                message: "Incorrect username"
+                message: "Email không tồn tại"
             });
         }
         if (!user.validatePassword(password)) {
             return done(null, false, {
-                message: "Incorrect password"
+                message: "Mật khẩu không đúng"
             });
         }
         return done(null, user);

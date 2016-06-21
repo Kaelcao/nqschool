@@ -1,4 +1,22 @@
 extends layout
 
 block content
-    div Login form
+    div
+        .container
+            .row
+                col-xs-12.col-sm-8.col-sm-offset-2
+                    .panel.panel-default
+                        .panel-heading Đăng nhập vào tài khoản
+                        .panel-body
+                            form(method="post",action="process-login")
+                                if message.length > 0
+                                    .alert.alert-danger #{message}
+                                input(type="hidden",name="_csrf",value="#{csrf}")
+                                .form-group
+                                    label(for="email") Email
+                                    input.form-control#email(type="email",name="email",placeholder="Email")
+                                .form-group
+                                    label(for="password") Mật khẩu
+                                    input.form-control#password(type="password",name="password",placeholder="Mật khẩu")
+                                button.btn.btn-default(type="submit",name="submit") Đăng nhập
+                                button.btn.btn-danger.space-left(type="reset") Reset

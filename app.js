@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
@@ -11,8 +12,9 @@ var csrf = require('csurf');
 var session = require('express-session');
 
 
-require("./app_api/config/db");
-require("./app_api/config/passport");
+
+require("./common/config/db");
+require("./app/configs/passport");
 
 var routes = require('./app/routes/index');
 var routesApi = require("./app_api/routes/index");
@@ -29,12 +31,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(session({
-    secret:process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     proxy: true,
     resave: true,
     saveUninitialized: true
 }));
+app.use(flash());
 app.use(csrf());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(sass({
     src: __dirname + '/sass',
@@ -44,11 +49,17 @@ app.use(sass({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('*', function(req, res, next) {
+    // put user into res.locals for easy access from templates
+    res.locals.user = req.user || null;
 
+    next();
+});
 app.use('/', routes);
 
-app.use(passport.initialize());
+
 app.use('/api', routesApi);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
